@@ -5,6 +5,7 @@ $(function(){
     AtualizaTamanhoFrase()
     InicializaContadores()
     InicializaCronometro()
+    InicializaMarcadores()
     $('#botao-reiniciar').click(ReiniciaJogo)
 })
 
@@ -27,13 +28,29 @@ function InicializaContadores() {
     
 }
 
+function InicializaMarcadores() {
+    var frase = $('.frase').text()
+
+    campo.on('input', function () {
+        var digitado = campo.val()
+        var digitouCorreto = frase.startsWith(digitado)
+        
+        if (digitouCorreto) {
+            campo.addClass('borda-verde')
+            campo.removeClass('borda-vermelha')
+        }else{
+            campo.addClass('borda-vermelha')
+            campo.removeClass('borda-verde')    
+        }
+    })
+}
+
 function InicializaCronometro() {
     var tempoRestante = $('#tempo-digitacao').text()
     campo.one('focus', function () {
         $('#botao-reiniciar').attr('disabled',true)
         var cronometroID = setInterval(function () {
             tempoRestante--;
-            console.log(tempoRestante)
             $('#tempo-digitacao').text(tempoRestante)
             if (tempoRestante < 1) {
                  $('#botao-reiniciar').attr('disabled',false)
@@ -52,5 +69,7 @@ function ReiniciaJogo() {
         $('#contador-palavras').text('0')
         $('#contador-caracteres').text('0') 
         campo.removeClass('campo-desativado')
+        campo.removeClass('borda-vermelha')
+        campo.removeClass('borda-verde')
         InicializaCronometro()
 }
