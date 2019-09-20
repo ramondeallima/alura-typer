@@ -67,19 +67,6 @@ function FinalizaJogo() {
     InserePlacar()
 }
 
-function InserePlacar() {
-    var corpoTabela = $('.placar').find('tbody')
-    var usuario = "Ramon"
-    var numPalavras = $('#contador-palavras').text()
-
-    var linha = '<tr>'+
-                    '<td>'+usuario+'</td>'+
-                    '<td>'+numPalavras+'</td>'+
-                '</tr>'
-
-    corpoTabela.prepend(linha)
-}
-
 function ReiniciaJogo() {
         campo.val('')
         campo.attr('disabled', false)
@@ -91,3 +78,4 @@ function ReiniciaJogo() {
         campo.removeClass('borda-verde')
         InicializaCronometro()
 }
+
