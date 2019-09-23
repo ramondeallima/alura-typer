@@ -8,6 +8,18 @@ function InserePlacar() {
     var linha = novaLinha(usuario,numPalavras)
     linha.find('.botao-remover').click(removeLinha)
     corpoTabela.prepend(linha)
+
+    $('.placar').slideDown(500)
+    scrollPlacar()
+}
+
+function scrollPlacar() {
+    var posicaoPlacar = $('.placar').offset().top
+    $('html').animate(
+    {
+        scrollTop: posicaoPlacar + "px"
+    }, 1000);
+
 }
 
 function novaLinha(usuario, palavras) {
