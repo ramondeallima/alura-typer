@@ -2,12 +2,18 @@ var tempoInicial = $('#tempo-digitacao').text()
 var campo = $('.campo-digitacao')
 
 $(function(){
+    fraseAleatoria()
     AtualizaTamanhoFrase()
     InicializaContadores()
     InicializaCronometro()
     InicializaMarcadores()
     $('#botao-reiniciar').click(ReiniciaJogo)
 })
+
+function AtualizaTempoInicial(tempo) {
+    tempoInicial = tempo
+    $('#tempo-digitacao').text(tempo)
+}
 
 function AtualizaTamanhoFrase() {
     var frase = $('.frase').text()
@@ -29,9 +35,8 @@ function InicializaContadores() {
 }
 
 function InicializaMarcadores() {
-    var frase = $('.frase').text()
-
     campo.on('input', function () {
+        var frase = $('.frase').text()
         var digitado = campo.val()
         var digitouCorreto = frase.startsWith(digitado)
         
@@ -46,8 +51,8 @@ function InicializaMarcadores() {
 }
 
 function InicializaCronometro() {
-    var tempoRestante = $('#tempo-digitacao').text()
     campo.one('focus', function () {
+        var tempoRestante = $('#tempo-digitacao').text()
         $('#botao-reiniciar').attr('disabled',true)
         var cronometroID = setInterval(function () {
             tempoRestante--;
