@@ -2,7 +2,6 @@ var tempoInicial = $('#tempo-digitacao').text()
 var campo = $('.campo-digitacao')
 
 $(function(){
-    fraseAleatoria()
     AtualizaTamanhoFrase()
     InicializaContadores()
     InicializaCronometro()

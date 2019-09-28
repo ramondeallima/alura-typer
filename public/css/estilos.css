@@ -25,3 +25,9 @@
 body{
     overflow: scroll;
 }
+#erro{
+    display: none;
+}
+#spinner{
+    display: none;
+}
